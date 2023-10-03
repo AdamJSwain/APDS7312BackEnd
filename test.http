@@ -1,0 +1,21 @@
+GET http://localhost:3000 HTTP/1.1
+###
+GET https://localhost:3000 HTTP/1.1
+###
+GET https://localhost:3000/test HTTP/1.1
+###
+GET https://localhost:3000/api/departments HTTP/1.1
+###
+POST https://localhost:3000/api/posts HTTP/1.1
+content-type: application/json
+
+{
+    "department": "Corruption",
+    "content": "We are still still not corrupt enough"
+}
+###
+GET https://localhost:3000/api/posts HTTP/1.1
+###
+DELETE https://localhost:3000/api/posts/651c63b8da6c48e170b97e92 HTTP/1.1
+###
+GET https://localhost:3000/api/posts/651c62a6dfe2094055eaf760 HTTP/1.1
