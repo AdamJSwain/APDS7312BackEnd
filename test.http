@@ -10,12 +10,42 @@ POST https://localhost:3000/api/posts HTTP/1.1
 content-type: application/json
 
 {
-    "department": "Corruption",
-    "content": "We are still still not corrupt enough"
+    "department": "Electric",
+    "content": "we still have no power"
 }
+
 ###
 GET https://localhost:3000/api/posts HTTP/1.1
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NTFkMzVlM2UzNWQyZGY5NGZlNzBkMzIiLCJpYXQiOjE2OTY0MTY3NTMsImV4cCI6MTY5NjUwMzE1M30.x83AnchRa8O8IWY6giWRmgmyvJvaQyncRKBzTJN47gU
 ###
 DELETE https://localhost:3000/api/posts/651c63b8da6c48e170b97e92 HTTP/1.1
 ###
 GET https://localhost:3000/api/posts/651c62a6dfe2094055eaf760 HTTP/1.1
+###
+POST https://localhost:3000/api/users/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "st10081966",
+    "email": "st10081966@vcconnect.edu.za",
+    "name": "Adam",
+    "surname": "Swain",
+    "password": "Testing123"
+}
+
+###
+POST https://localhost:3000/api/users/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "st10081966",
+    "password": "Testing123"
+}
+###
+POST https://localhost:3000/api/users/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "st10081966",
+    "password": "Testing124"
+}
