@@ -60,7 +60,7 @@ router.delete('/:postID',async (req, res) =>
     const {postID} = req.params
     await Post.deleteOne({_id: postID})
     res.status(200).json({
-        message: 'Posts relocated to Ocean View'
+        message: 'Post deleted'
         
     })
     } catch (error) {

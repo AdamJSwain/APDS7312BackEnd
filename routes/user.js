@@ -50,15 +50,13 @@ router.post('/login',async (req, res) =>
     res.status(201).json({
         message: 'logged in',
         token
-        
     })
     } catch (error) {
         console.error(error)
         res.status(500).json({
             message: 'Stuff is broken yo! but for login'
         })
-    }
-    
+    } 
 })
 
 function createAuthToken(userID)

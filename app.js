@@ -2,7 +2,6 @@ const express = require('express')
 const mongoose = require('mongoose')
 const fs = require('fs');
 const app = express()
-const router = express.Router()
 const postRoutes = require('./routes/post')
 const userRoutes = require('./routes/user')
 const authMW = require('./middleware/auth')
@@ -20,7 +19,7 @@ mongoose.connect(connstring)
 )
 .catch(()=>
 {
-    console.log('L bozo, not connected :-(')
+    console.log('not connected :-(')
 },options
 );
 app.use((req, res, next) => {
