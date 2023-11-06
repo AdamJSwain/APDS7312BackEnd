@@ -3,6 +3,9 @@ const router = express.Router();
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const ExpressBrute = require("express-brute");
+const store = new ExpressBrute.MemoryStore();
+const bruteforce = new ExpressBrute(store);
 
 router.post("/register", async (req, res) => {
 	try {
@@ -24,12 +27,12 @@ router.post("/register", async (req, res) => {
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({
-			message: "User could not be registered",
+			message: error,
 		});
 	}
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", bruteforce.prevent, async (req, res) => {
 	try {
 		const { username, password } = req.body;
 		const user = await User.findOne({ username });

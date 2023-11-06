@@ -5,7 +5,14 @@ const app = express();
 const postRoutes = require("./routes/post");
 const userRoutes = require("./routes/user");
 const authMW = require("./middleware/auth");
+const cors = require("cors");
+const helmet = require("helmet");
+const morgan = require("morgan");
+
 require("dotenv").config();
+app.use(cors({ origin: "http://localhost:4200", optionsSuccessStatus: 200 }));
+app.use(helmet());
+app.use(morgan("tiny"));
 app.use(express.json());
 
 const cert = fs.readFileSync("keys/Certificate.pem");
@@ -28,11 +35,12 @@ app.use((req, res, next) => {
 		"Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
 		"Content-Type": "application/json",
 		"Access-Control-Allow-Headers":
-			"Origin, X-Requested-Width, Content-Type, Authorization",
+			"Origin, X-Requested-Width, Content-Type,Accept,Authorization",
 		"Content-Security-Policy": "script-src 'self'",
 	});
 	next();
 });
+
 app.use("/api/posts", authMW, postRoutes);
 app.use("/api/users", userRoutes);
 module.exports = app;
